@@ -1,0 +1,4 @@
+*.mypy_cache/
+venv/
+parallelexec.egg-info
+__pycache__/
