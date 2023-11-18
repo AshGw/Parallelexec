@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-
 build-then-publish-pypi:
   runs-on: ubuntu-latest
   steps:
@@ -20,9 +19,7 @@ build-then-publish-pypi:
         python -m pip install --upgrade pip
         pip install wheel twine
     - name: Build
-      run: |
-        rm -rf dist | rm -rf build | rm -rf parallelexec.egg-info
-        python setup.py bdist_wheel sdist
+      run: python setup.py bdist_wheel sdist
     - name: Check distro
       run: twine check dist/*
     - name: Publish to PyPI

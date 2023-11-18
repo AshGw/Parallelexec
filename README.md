@@ -8,6 +8,7 @@
 pip install parallelexec
 ````
 ## Usage 
+### Threads:
 ````python
 from parallelexec import ParallelExec
 
@@ -15,7 +16,17 @@ from parallelexec import ParallelExec
 def fun():
     ...
 ````
+### Processes:
+````python
+from parallelexec import ParallelExec
 
+def func() -> None: ...
+def func2() -> None: ...
+def func3() -> None: ...
+
+if __name__ == "__main__":
+    ParallelExec.cores_limited_processor([func,func2,func3])
+````
 #### Better yet, check `examples/`
 ## License 
-#### This is under The [Public Domain](/UNLICENSE)
+#### This is under the [Public Domain](/UNLICENSE)
