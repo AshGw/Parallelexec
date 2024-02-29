@@ -15,7 +15,7 @@ jobs:
       - name: Environment setup
         uses: actions/setup-python@v3
         with:
-          python-version: 3.9
+          python-version: 3.11
       - name: poetry setup
         run: |
           set -e && set -x
