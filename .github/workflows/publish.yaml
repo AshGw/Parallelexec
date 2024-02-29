@@ -5,6 +5,7 @@ on:
     branches:
       - main
 
+
 jobs:
   pypi:
     runs-on: ubuntu-latest
@@ -14,17 +15,19 @@ jobs:
       - name: Environment setup
         uses: actions/setup-python@v3
         with:
-          python-version: 3.11
-      - name: Setup
+          python-version: 3.9
+      - name: poetry setup
         run: |
+          set -e && set -x
           python -m pip install --upgrade pip
-          pip install wheel twine
-      - name: Build
-        run: python setup.py bdist_wheel sdist
-      - name: Check distro
-        run: twine check dist/*
-      - name: Publish to PyPI
+          python -m pip install poetry
+          poetry config virtualenvs.create false
+          poetry install
+
+      - name: publish
         env:
-          TWINE_USERNAME: ${{ secrets.TWINE_USERNAME}}
-          TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD}}
-        run: twine upload dist/* --verbose
+          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          python -m poetry config pypi-token.pypi $PYPI_TOKEN
+          set -e
+          python -m poetry publish --build
