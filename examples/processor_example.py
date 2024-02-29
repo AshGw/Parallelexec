@@ -30,6 +30,8 @@ if __name__ == "__main__":
         ...
 
     print("This will run anyway")
+
     run()
+
     print("if join is True this should only show up if run() has finished executing")
     print("same here")
