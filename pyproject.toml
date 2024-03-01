@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "parallelexec"
-version = "0.0.2"
+version = "0.0.3"
 description = "Module that provides decorators and methods to easily run multiple functions concurrently"
 authors = ["AshGw <AshrefGw@proton.me>"]
 license = "MIT"
